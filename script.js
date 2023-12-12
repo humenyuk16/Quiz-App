@@ -10,14 +10,15 @@ document.addEventListener("DOMContentLoaded", function() {
 });
 
 function checkAnswer(selectOption){
-    const correctAnswer = 'c';
+    const correctAnswer = 'a';
      // Get all elements with the class 'answer' (answer options)
-    const options = document.querySelector(".answer");
+    const options =Array.from(document.querySelectorAll(".answer"));
 
     options.forEach(option => {
         const label = document.querySelector(`label[for ="${option.id}"]`)
-        if(option === selectOption){
-            if(option.classList.contains("answer-correct")){
+        const optionId = option.id;
+        if(optionId === selectOption){
+            if(optionId === correctAnswer){
                 label.style.color = "green";
             }else{
                label.style.color ="red";
@@ -35,5 +36,7 @@ answerOptions.forEach(option =>{
         checkAnswer(option);
     })
 })
+
+
 
 

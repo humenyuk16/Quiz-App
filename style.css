@@ -58,7 +58,7 @@ body {
 }
 
 #quizForm h2 {
-  font-size: 2.5rem;
+  font-size: 2rem;
   padding: 2rem;
 }
 
@@ -76,13 +76,21 @@ ul {
   padding: 0;
 }
 
-ul li {
-  font-size: 2rem;
-  padding: 10px 0px;
+li {
+  position: relative;
+  padding-left: 35px;
+  margin-bottom: 10px;
+  cursor: pointer;
+  font-size: 1.5rem;
+  line-height: 1.5;
 }
 
 ul li label {
   cursor: pointer;
+}
+
+input[type="radio"] {
+  display: none;
 }
 
 #submitButton {

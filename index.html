@@ -15,8 +15,8 @@
       </section>
       <section class="question-section" id="questionSection">
         <form id="quizForm">
-          <h2>Quiz question</h2>
-          <ul>
+          <h2 id="questionText">Quiz question</h2>
+          <ul id="answersList">
             <li>
               <input
                 type="radio"
@@ -32,7 +32,7 @@
                 type="radio"
                 id="b"
                 name="answer"
-                class="answer-correct"
+                class="answer"
                 onclick="checkAnswer('b')"
               />
               <label for="b" id="b-text">Answer </label>
