@@ -13,55 +13,18 @@
 
         <button class="start-button" id="startButton">Start</button>
       </section>
+
       <section class="question-section" id="questionSection">
         <form id="quizForm">
           <h2 id="questionText">Quiz question</h2>
-          <ul id="answersList">
-            <li>
-              <input
-                type="radio"
-                id="a"
-                name="answer"
-                class="answer"
-                onclick="checkAnswer('a')"
-              />
-              <label for="a" id="a-text">Answer </label>
-            </li>
-            <li>
-              <input
-                type="radio"
-                id="b"
-                name="answer"
-                class="answer"
-                onclick="checkAnswer('b')"
-              />
-              <label for="b" id="b-text">Answer </label>
-            </li>
-
-            <li>
-              <input
-                type="radio"
-                id="c"
-                name="answer"
-                class="answer"
-                onclick="checkAnswer('c')"
-              />
-              <label for="c" id="c-text">Answer </label>
-            </li>
-
-            <li>
-              <input
-                type="radio"
-                id="d"
-                name="answer"
-                class="answer"
-                onclick="checkAnswer('d')"
-              />
-              <label for="d" id="d-text">Answer </label>
-            </li>
-          </ul>
-          <button id="submitButton">Submit</button>
+          <div id="answer-section">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
         </form>
+        <button id="next-btn">Next Question</button>
       </section>
     </div>
     <script src="script.js"></script>
