@@ -1,7 +1,7 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const startButton = document.getElementById("startButton");
-const welcomeSection = document.getElementById("welcomeSection");
-    const questionSection = document.getElementById("questionSection");
+  const startButton = document.getElementById("start-button");
+const welcomeSection = document.getElementById("welcome-section");
+    const questionSection = document.getElementById("question-section");
 
     startButton.addEventListener("click", function(){
     welcomeSection.style.display = "none";
@@ -11,7 +11,7 @@ const welcomeSection = document.getElementById("welcomeSection");
 });
 });
 
-const questionsArray = [
+const questions = [
     {
       question: 'What is the capital of France?',
       options: [
@@ -31,7 +31,7 @@ const questionsArray = [
       ],
     },
     {
-    question: 'What is the largest mammal?',
+    question: 'What is the largest animal?',
     options: [
       {  text: 'Elephant', correct: false },
       {  text: 'Blue whale', correct: true },
@@ -69,7 +69,7 @@ const questionsArray = [
   ];
 
 
-const questionText = document.getElementById("questionText");
+const questionText = document.getElementById("question-text");
 const answerSection = document.getElementById("answer-section");
 const nextButton = document.getElementById("next-btn");
 
@@ -84,7 +84,7 @@ function startQuiz() {
 }
 function showQuestion(){
     resetState();
-    let currentQuestion = questionsArray[currentQuestionIndex];
+    let currentQuestion = questions[currentQuestionIndex];
     let questionNo = currentQuestionIndex + 1;
     questionText.innerText = questionNo + ". " + currentQuestion.question;
 
@@ -98,14 +98,26 @@ function showQuestion(){
         }
         button.addEventListener("click", selectOption);
         
-    })
+    });
+    
 }
 function resetState(){
-    nextButton.style.display = "none";
     while(answerSection.firstChild){
         answerSection.removeChild(answerSection.firstChild);
     }
+    
 }
+
+function restartQuiz() {
+  currentQuestionIndex = 0;
+  score = 0;
+  showQuestion();
+  nextButton.style.display = "block";
+  nextButton.innerText = "Next";
+  nextButton.removeEventListener("click", restartQuiz);
+}
+
+
 
 function selectOption(e){
     const selectedBtn = e.target;
@@ -128,15 +140,16 @@ function selectOption(e){
 
 function showScore(){
     resetState();
-    questionText.innerText = `You scored ${score} out of ${questionsArray.length}`;
+    questionText.innerText = `You scored ${score} out of ${questions.length}`;
    nextButton.innerText = "Play Again";
    nextButton.style.display = "block";
-   nextButton.addEventListener("click", startQuiz);
+   nextButton.addEventListener("click", restartQuiz);
 }
 
-function handleNextBotton(){
 
-    if (currentQuestionIndex < questionsArray.length - 1){
+function handleNextButton(){
+
+    if (currentQuestionIndex < questions.length - 1){
         currentQuestionIndex++;
         showQuestion();
     }else{
@@ -147,13 +160,13 @@ function handleNextBotton(){
 
 
 nextButton.addEventListener("click", () => {
- if(currentQuestionIndex < questionsArray.length ){
-      handleNextBotton();
+ if(currentQuestionIndex < questions.length ){
+      handleNextButton();
         
     }else{
         startQuiz();
     }
-})
+});
 
 
 

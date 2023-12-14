@@ -15,7 +15,7 @@ body {
   justify-content: center;
   align-items: center;
   flex-direction: column;
-  height: 100vh;
+  height: 100dvh;
 }
 
 .welcome-section {
@@ -42,7 +42,7 @@ body {
   cursor: pointer;
 }
 
-#questionSection {
+#question-section {
   display: none;
 }
 
@@ -57,7 +57,7 @@ body {
   border: 0.1rem solid black;
 }
 
-#questionText {
+#question-text {
   font-size: 2rem;
   padding: 2rem;
 }
@@ -84,6 +84,7 @@ body {
   cursor: pointer;
   transition: all 0.3s ease;
 }
+
 .btn:hover:not([disabled]) {
   background-color: #cf9acc;
   color: #fff;
@@ -93,7 +94,7 @@ body {
   cursor: not-allowed;
 }
 
-#quizForm {
+#quiz-form {
   padding: 5rem;
   display: flex;
   align-items: center;
