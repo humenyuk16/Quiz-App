@@ -1,0 +1,125 @@
+/*1rem =16px*/
+
+* {
+  margin: 0;
+  padding: 0;
+  font-family: Cambria, Cochin, Georgia, Times, "Times New Roman", serif;
+  box-sizing: border-box;
+}
+
+body {
+  background-color: #d576d0;
+}
+.quiz-container {
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  flex-direction: column;
+  height: 100dvh;
+}
+
+.welcome-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.welcome-section h1 {
+  font-size: 4rem;
+}
+
+.start-button {
+  width: 11rem;
+  height: 3.5rem;
+  margin: 2rem;
+  border: 2px solid black;
+  border-radius: 0.3rem;
+  background-color: #d37dcf;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+#question-section {
+  display: none;
+}
+
+.question-section {
+  background-color: rgb(250, 242, 231);
+  display: flex;
+  justify-content: center;
+  align-items: center;
+  text-align: center;
+  height: 45rem;
+  width: 40rem;
+  border: 0.1rem solid black;
+}
+
+#question-text {
+  font-size: 2rem;
+  padding: 2rem;
+}
+
+.answer-section {
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+}
+
+.btn {
+  font-weight: 500;
+  width: 100%;
+  border: 1px solid rgb(61, 61, 61);
+  border-radius: 0.3rem;
+  background-color: #ffdffd;
+  color: black;
+  font-size: 1.5rem;
+  cursor: pointer;
+  padding: 10px;
+  margin: 10px 0;
+  text-align: left;
+  cursor: pointer;
+  transition: all 0.3s ease;
+}
+
+.btn:hover:not([disabled]) {
+  background-color: #cf9acc;
+  color: #fff;
+}
+
+.btn:disabled {
+  cursor: not-allowed;
+}
+
+#quiz-form {
+  padding: 5rem;
+  display: flex;
+  align-items: center;
+  justify-content: center;
+  flex-direction: column;
+  text-align: center;
+}
+
+#next-btn {
+  display: block;
+  width: 13rem;
+  height: 3.5rem;
+  margin: 1rem auto;
+  border: 1px solid rgb(61, 61, 61);
+  border-radius: 0.3rem;
+  background-color: #ffdffd;
+  color: black;
+  font-size: 1.5rem;
+  font-weight: 500;
+  cursor: pointer;
+}
+
+.correct {
+  background-color: #bcedbc;
+}
+.incorrect {
+  background-color: #eaadb2;
+}
