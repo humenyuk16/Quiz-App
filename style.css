@@ -84,63 +84,6 @@ nav {
   justify-content: center;
   align-items: center;
 }
-/* .quiz-game-button,
-.create-quiz-btn {
-  width: 11rem;
-  height: 3rem;
-  margin: 2rem;
-  box-sizing: border-box;
-  border: 2px solid #111;
-  border-radius: 8px;
-  background-color: var(--main-btn-bg-color);
-  color: var(--main-text-color);
-  font-size: 1.2rem;
-  font-weight: 500;
-  cursor: pointer;
-  align-items: center;
-  display: flex;
-  justify-content: center;
-  line-height: 1.5rem;
-  max-width: 100%;
-  padding: 0 25px;
-  position: relative;
-  text-align: center;
-  text-decoration: none;
-  user-select: none;
-  touch-action: manipulation;
-}
-
-.create-quiz-btn:after,
-.quiz-game-button:after {
-  background-color: var(--main-text-color);
-  border-radius: 8px;
-  content: "";
-  display: block;
-  height: 48px;
-  left: 0;
-  width: 100%;
-  position: absolute;
-  top: -2px;
-  transform: translate(8px, 8px);
-  transition: transform 0.2s ease-out;
-  z-index: -1;
-}
-
-.quiz-game-button:active,
-.create-quiz-btn:active {
-  background-color: var(--main-btn-bg-color);
-  outline: 0;
-}
-
-.quiz-game-button:hover::after,
-.create-quiz-btn:hover:after {
-  transform: translate(0, 0);
-}
-
-.quiz-game-button:focus:hover,
-.create-quiz-btn:focus:hover {
-  outline: 0;
-} */
 
 .quiz-game-button,
 .create-quiz-btn {
@@ -330,24 +273,6 @@ label {
   color: #111;
   cursor: pointer;
 }
-
-/* #submit-btn,
-#next-btn,
-#return-home-btn {
-  width: 10rem;
-  height: 3rem;
-  margin: 2rem;
-  border: 2px solid #111;
-  border-radius: 8px;
-  background-color: var(--main-btn-bg-color);
-  color: var(--main-text-color);
-  font-size: 1.2rem;
-  font-weight: 700;
-  cursor: pointer;
-  padding: 0 20px;
-  position: relative;
-  text-align: center;
-} */
 
 .quize-buttons {
   display: flex;
