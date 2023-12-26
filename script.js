@@ -1,16 +1,171 @@
 document.addEventListener("DOMContentLoaded", function() {
-  const startButton = document.getElementById("start-button");
-const welcomeSection = document.getElementById("welcome-section");
-    const questionSection = document.getElementById("question-section");
+  const quizGameButton = document.getElementById("quiz-game-button");
+  const createQuizBtn = document.getElementById("create-quiz-btn");
+  const welcomeSection = document.getElementById("welcome-section");
+  const questionSection = document.getElementById("question-section");
+  const quizFormUser = document.getElementById("quiz-create-form");
+  const questionsListContainer = document.getElementById("questions-list-container");
+  const returnHomeButton = document.getElementById("return-home-btn");
+  
+ 
+  function showWelcomeSection(){
+    welcomeSection.style.display = "block";
+    questionSection.style.display = "none";
+    quizFormUser.style.display = "none";
+    questionsListContainer.style.display = "none";
+  }
+  returnHomeButton.addEventListener("click", function(){
+showWelcomeSection();
 
-    startButton.addEventListener("click", function(){
+  });
+
+    
+    quizGameButton.addEventListener("click", function(){
     welcomeSection.style.display = "none";
+    quizFormUser.style.display = "none";
     questionSection.style.display = "block";
+    questionsListContainer.style.display = "none";
+
     startQuiz();
 
 });
+
+createQuizBtn.addEventListener("click", function(){
+    welcomeSection.style.display = "none";
+    questionSection.style.display = "none";
+    quizFormUser.style.display = "flex";
+    questionsListContainer.style.display = "flex";   
+   
+});
 });
 
+// CREATE QUIZ
+
+const quizFormUser = document.getElementById('quiz-create-form');
+const buttonSubmit = document.getElementById('submit-btn');
+const questionList = document.getElementById('question-list');
+const searchInput = document.getElementById('search-input');
+const revealBtns = [];
+const quizQuestions = [];
+
+quizFormUser.addEventListener('submit', function(event) {
+  event.preventDefault();
+
+  // Get user inputs
+  const question = document.getElementById('question').value;
+  const option1 = document.getElementById('option1').value;
+  const option2 = document.getElementById('option2').value;
+  const option3 = document.getElementById('option3').value;
+  const option4 = document.getElementById('option4').value;
+  const correctAnswer = document.getElementById('correct-answer').value;
+
+  // Create a new question object
+  const newQuestion = {
+    question,
+    options: [option1, option2, option3, option4],
+    correctAnswer: parseInt(correctAnswer),
+    isForQuizPlay: false
+  };
+
+  alert('Question added successfully!');
+  quizQuestions.push(newQuestion);
+
+  // Clear form inputs
+  document.getElementById('question').value = '';
+  document.getElementById('option1').value = '';
+  document.getElementById('option2').value = '';
+  document.getElementById('option3').value = '';
+  document.getElementById('option4').value = '';
+
+  updateQuestionList();
+});
+
+function updateQuestionList() {
+  // Clear the question list
+  questionList.innerHTML = '';
+
+  // Loop through the quizQuestions array and create list items for each question
+  quizQuestions.forEach((question, index) => {
+    const listItem = document.createElement("li");
+    listItem.className = "question-list-item";
+
+
+       // Display the question
+       const questionHeader = document.createElement("h3");
+       questionHeader.className = "question-header";
+       questionHeader.classList.add("question-header");
+       questionHeader.textContent = `Q ${index + 1}: ${question.question}`;
+       listItem.appendChild(questionHeader);
+   
+       // Display the options, with the correct and wrong answear
+       const optionsList = document.createElement("ul");
+       optionsList.className = "options-list";
+       question.options.forEach((option, optionIndex) => {
+         const optionItem = document.createElement("li");
+         optionItem.textContent = `${optionIndex + 1}: ${option}`;
+         optionsList.appendChild(optionItem);
+       });
+       listItem.appendChild(optionsList);
+
+       if(question.isForQuizPlay){
+        question.options.forEach((option, optionIndex) => {
+          if (optionIndex === question.correctAnswer - 1) {
+            optionItem.children[optionIndex].style.color = "green";
+           } else {
+            optionsList.children[optionIndex].style.color = "red";
+           }
+        });
+       }
+    // Create a button to reveal the correct answer
+    const revealBtn = document.createElement("button");
+    revealBtn.className = "reveal-btn";
+    revealBtn.textContent = "Reveal Answer";
+    revealBtn.addEventListener("click", function() {
+      alert(`The correct answer for question ${index + 1} is Option ${question.correctAnswer}`);
+    });
+    revealBtns.push(revealBtn);
+    listItem.appendChild(revealBtn);
+    questionList.appendChild(listItem);
+  });
+
+}
+
+
+
+
+searchInput.addEventListener("input", function() {
+  const searchQuery = searchInput.value.toLowerCase();
+
+  // Filter the quizQuestions array by the search query
+  const filteredQuestions = quizQuestions.filter(question =>
+    question.question.toLowerCase().includes(searchQuery)
+  );
+
+  // Update the question list with the filtered questions
+  updateFilteredQuestionList(filteredQuestions);
+});
+
+function updateFilteredQuestionList(filteredQuestions) {
+  // Clear the question list
+  questionList.innerHTML = "";
+
+  // Loop through the filtered questions and create list items for each question
+  filteredQuestions.forEach((question, index) => {
+    const listItem = document.createElement("li");
+    
+    listItem.textContent = question.question;
+    questionList.appendChild(listItem);
+
+    // button to reveal the correct answer
+    const revealBtn = revealBtns[index];
+    listItem.appendChild(revealBtn);
+  });
+  
+}
+
+
+
+//QUIZ STANDART GAME
 const questions = [
     {
       question: 'What is the capital of France?',
@@ -79,7 +234,7 @@ let score = 0;
 function startQuiz() {
   currentQuestionIndex = 0;
   score = 0;
-  nextButton.textContent = "Next";
+  nextButton.textContent = "Next →";
   showQuestion();
 }
 function showQuestion(){
@@ -113,7 +268,7 @@ function restartQuiz() {
   score = 0;
   showQuestion();
   nextButton.style.display = "block";
-  nextButton.innerText = "Next";
+  nextButton.innerText = "Next →";
   nextButton.removeEventListener("click", restartQuiz);
 }
 
@@ -167,8 +322,6 @@ nextButton.addEventListener("click", () => {
         startQuiz();
     }
 });
-
-
 
 
 
