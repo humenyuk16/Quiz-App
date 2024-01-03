@@ -1,0 +1,101 @@
+<!DOCTYPE html>
+<html lang="en">
+  <head>
+    <meta charset="UTF-8" />
+    <meta name="viewport" content="width=device-width, initial-scale=1.0" />
+    <title>Quiz App</title>
+    <link rel="stylesheet" href="style.css" />
+  </head>
+  <body>
+    <header>
+      <nav>
+        <h4>QUIZ APP</h4>
+        <ul class="nav-links" id="nav-links">
+          <li><a href="#welcome-section">Home</a></li>
+          <li><a href="#quiz-create-section">Create Quiz</a></li>
+          <li><a href="#question-section">Quiz Game</a></li>
+        </ul>
+      </nav>
+    </header>
+    <div id="quiz-container" class="quiz-container">
+      <section class="welcome-section" id="welcome-section">
+        <h1>Welcome to the Quiz</h1>
+        <div class="quiz-players-names" id="quiz-players-names"></div>
+        <div class="buttons" id="buttons">
+          <p class="quiz-paragraph">
+            Create your own quiz by adding your unique questions and answers.
+            Customize a quiz that matches your interests and preferences.
+          </p>
+          <button class="create-quiz-btn" id="create-quiz-btn">
+            Create quiz
+          </button>
+          <p class="quiz-paragraph">
+            Start the quiz game with ready-made questions. Test your knowledge
+            with the provided set of questions and answers.
+          </p>
+          <button class="quiz-game-button" id="quiz-game-button">
+            Quiz game
+          </button>
+        </div>
+      </section>
+      <section class="question-section" id="question-section">
+        <form id="quiz-form">
+          <h2 id="question-text">Quiz question</h2>
+          <div id="answer-section">
+            <button class="btn">Answer 1</button>
+            <button class="btn">Answer 2</button>
+            <button class="btn">Answer 3</button>
+            <button class="btn">Answer 4</button>
+          </div>
+        </form>
+        <div class="quize-buttons">
+          <button id="next-btn" class="next-btn">Next→</button>
+          <button id="return-home-btn" class="return-home-btn">← Home</button>
+        </div>
+      </section>
+      <section class="quiz-create-section" id="quiz-create-section">
+        <form id="quiz-create-form" class="quiz-create-form">
+          <h1 class="quiz-form-heading" id="quiz-form-heading">
+            Create your own Quiz
+          </h1>
+          <label for="question"> Write your question below :</label>
+          <input
+            type="text"
+            id="question"
+            name="question"
+            maxlength="140"
+            required
+            placeholder="Max 140 characters"
+          />
+          <label for="option1">Option 1:</label>
+          <input type="text" id="option1" name="option1" required />
+          <label for="option2">Option 2:</label>
+          <input type="text" id="option2" name="option2" required />
+          <label for="option3">Option 3:</label>
+          <input type="text" id="option3" name="option3" required />
+          <label for="option4">Option 4:</label>
+          <input type="text" id="option4" name="option4" required />
+          <label for="correct-answer" class="correct-answer"></label>
+          <select id="correct-answer" required>
+            <option value="">Select an correct option</option>
+            <option value="1">Option 1</option>
+            <option value="2">Option 2</option>
+            <option value="3">Option 3</option>
+            <option value="4">Option 4</option>
+          </select>
+
+          <button id="submit-btn" class="submit-btn" type="submit">
+            Submit
+          </button>
+          <dialog id="dialog" class="dialog"></dialog>
+        </form>
+        <div class="questions-list-container" id="questions-list-container">
+          <h2>Here you can find question which you created:</h2>
+          <input type="text" id="search-input" placeholder="Search question" />
+          <ul id="question-list"></ul>
+        </div>
+      </section>
+    </div>
+    <script src="script.js"></script>
+  </body>
+</html>
