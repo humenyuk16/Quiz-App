@@ -25,9 +25,6 @@ document.addEventListener("DOMContentLoaded", function() {
     });
   });
 
-  
-  
- 
   function showWelcomeSection(){
     welcomeSection.style.display = "flex";
     questionSection.style.display = "none";
@@ -355,6 +352,11 @@ nextButton.addEventListener("click", () => {
 
 
   
+  
+  
+
+
+
   
   
 
