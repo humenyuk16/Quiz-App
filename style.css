@@ -60,29 +60,55 @@ nav {
   display: flex;
   justify-content: center;
   align-items: center;
-  flex-direction: column;
   height: 100dvh;
 }
 
 /*Firs page*/
 .welcome-section {
   display: flex;
-  flex-direction: column;
+  flex-direction: row;
   align-items: center;
   justify-content: center;
 }
 
 .welcome-section h1 {
   font-size: 4rem;
+  position: absolute;
+  top: 50px;
+  left: 50%;
+  transform: translateX(-50%);
+  margin-top: 3rem;
+}
+
+.quiz-players-names {
+  background-color: var(--main-form-input-bg-color);
+  width: 26rem;
+  height: 36rem;
+  display: flex;
+  flex-direction: column;
+  align-items: center;
+  justify-content: center;
+  border-radius: 0.8rem;
+  margin: 1rem;
+}
+
+.quiz-paragraph {
+  font-size: 1.5rem;
+  text-align: center;
+  margin: 2rem;
+  color: var(--main-text-color);
 }
 
 .buttons {
   display: flex;
-  flex-wrap: wrap;
-  gap: 1rem;
-  flex-direction: row;
+  flex-direction: column;
   justify-content: center;
   align-items: center;
+  background-color: var(--main-form-input-bg-color);
+  border-radius: 0.8rem;
+  width: 43rem;
+  height: 36rem;
+  margin: 1rem;
 }
 
 .quiz-game-button,
@@ -97,7 +123,11 @@ nav {
   overflow: hidden;
   position: relative;
   z-index: 10;
-  margin: 2rem;
+}
+
+.quiz-game-button,
+.create-quiz-btn {
+  margin: 1rem;
 }
 
 .create-quiz-btn:after,
@@ -132,6 +162,24 @@ nav {
 
 /* Create quiz form*/
 
+.dialog {
+  position: fixed;
+  top: 50%;
+  left: 50%;
+  transform: translate(-50%, -50%);
+  background-color: var(--secondary-color);
+  border: 0.1rem solid #111;
+  border-radius: 1rem;
+  width: 25rem;
+  height: 8rem;
+  color: var(--main-text-color);
+  font-weight: 800;
+  text-align: center;
+  padding: 50px;
+  font-size: 1.3rem;
+  opacity: 0.9;
+}
+
 .quiz-create-section {
   display: flex;
   flex-direction: row;
@@ -147,13 +195,12 @@ nav {
 
 .questions-list-container h2 {
   font-size: 1.5rem;
-  margin-top: 3rem;
+  margin: 3rem 3rem 1rem 3rem;
   padding: 1rem 0;
   text-align: center;
   color: var(--primary-color);
 }
 .questions-list-container li {
-  font-size: 1.2rem;
   padding: 5px 15px;
   margin: 10px;
   list-style: none;
@@ -192,7 +239,6 @@ nav {
 }
 
 .question-header {
-  display: flex;
   font-size: 1.2rem;
   color: var(--main-text-color-light);
   border-top: #c0bfbf 1px solid;
@@ -213,7 +259,6 @@ nav {
 }
 
 .quiz-form-heading {
-  display: flex;
   font-size: 1.8rem;
   color: var(--primary-color);
   margin: 10px 0;
