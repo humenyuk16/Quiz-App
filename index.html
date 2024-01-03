@@ -20,10 +20,19 @@
     <div id="quiz-container" class="quiz-container">
       <section class="welcome-section" id="welcome-section">
         <h1>Welcome to the Quiz</h1>
+        <div class="quiz-players-names" id="quiz-players-names"></div>
         <div class="buttons" id="buttons">
+          <p class="quiz-paragraph">
+            Create your own quiz by adding your unique questions and answers.
+            Customize a quiz that matches your interests and preferences.
+          </p>
           <button class="create-quiz-btn" id="create-quiz-btn">
             Create quiz
           </button>
+          <p class="quiz-paragraph">
+            Start the quiz game with ready-made questions. Test your knowledge
+            with the provided set of questions and answers.
+          </p>
           <button class="quiz-game-button" id="quiz-game-button">
             Quiz game
           </button>
@@ -53,18 +62,19 @@
           <input
             type="text"
             id="question"
+            name="question"
             maxlength="140"
             required
             placeholder="Max 140 characters"
           />
           <label for="option1">Option 1:</label>
-          <input type="text" id="option1" required />
+          <input type="text" id="option1" name="option1" required />
           <label for="option2">Option 2:</label>
-          <input type="text" id="option2" required />
+          <input type="text" id="option2" name="option2" required />
           <label for="option3">Option 3:</label>
-          <input type="text" id="option3" required />
+          <input type="text" id="option3" name="option3" required />
           <label for="option4">Option 4:</label>
-          <input type="text" id="option4" required />
+          <input type="text" id="option4" name="option4" required />
           <label for="correct-answer" class="correct-answer"></label>
           <select id="correct-answer" required>
             <option value="">Select an correct option</option>
@@ -77,6 +87,7 @@
           <button id="submit-btn" class="submit-btn" type="submit">
             Submit
           </button>
+          <dialog id="dialog" class="dialog"></dialog>
         </form>
         <div class="questions-list-container" id="questions-list-container">
           <h2>Here you can find question which you created:</h2>
