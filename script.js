@@ -6,17 +6,36 @@ document.addEventListener("DOMContentLoaded", function() {
   const quizFormUser = document.getElementById("quiz-create-form");
   const questionsListContainer = document.getElementById("questions-list-container");
   const returnHomeButton = document.getElementById("return-home-btn");
+  const navLinks = document.querySelectorAll(".nav-links a");
+
+  navLinks.forEach(link => {
+    link.addEventListener("click", function(e){
+      e.preventDefault();
+
+      const targetId = link.getAttribute("href").substring(1);
+      const sections = document.querySelectorAll("section");
+      
+        sections.forEach(section => {
+          if (section.id === targetId) {
+            section.style.display = "flex";
+          } else {
+            section.style.display = "none";
+          }
+        });      
+    });
+  });
+
+  
   
  
   function showWelcomeSection(){
-    welcomeSection.style.display = "block";
+    welcomeSection.style.display = "flex";
     questionSection.style.display = "none";
     quizFormUser.style.display = "none";
     questionsListContainer.style.display = "none";
   }
   returnHomeButton.addEventListener("click", function(){
 showWelcomeSection();
-
   });
 
     
@@ -58,6 +77,7 @@ quizFormUser.addEventListener('submit', function(event) {
   const option3 = document.getElementById('option3').value;
   const option4 = document.getElementById('option4').value;
   const correctAnswer = document.getElementById('correct-answer').value;
+  const dialog = document.getElementById('dialog');
 
   // Create a new question object
   const newQuestion = {
@@ -67,8 +87,17 @@ quizFormUser.addEventListener('submit', function(event) {
     isForQuizPlay: false
   };
 
-  alert('Question added successfully!');
-  quizQuestions.push(newQuestion);
+ function showDialog(message){
+   dialog.textContent = message;
+   dialog.showModal();
+ }
+
+ quizQuestions.push(newQuestion);
+ showDialog('Question added successfully!');
+
+ setTimeout(() => {
+   dialog.close();
+ }, 2000);
 
   // Clear form inputs
   document.getElementById('question').value = '';
@@ -79,7 +108,14 @@ quizFormUser.addEventListener('submit', function(event) {
 
   updateQuestionList();
 });
-
+ 
+function createQuestionHeader(question, index){
+   const questionHeader = document.createElement("h3");
+   questionHeader.className = "question-header";
+   questionHeader.classList.add("question-header");
+   questionHeader.textContent = `Q ${index + 1}: ${question.question}`;
+return questionHeader;
+}
 function updateQuestionList() {
   // Clear the question list
   questionList.innerHTML = '';
@@ -89,15 +125,11 @@ function updateQuestionList() {
     const listItem = document.createElement("li");
     listItem.className = "question-list-item";
 
+    // Display the question
+    const questionHeader = createQuestionHeader(question, index);
+    listItem.appendChild(questionHeader);
 
-       // Display the question
-       const questionHeader = document.createElement("h3");
-       questionHeader.className = "question-header";
-       questionHeader.classList.add("question-header");
-       questionHeader.textContent = `Q ${index + 1}: ${question.question}`;
-       listItem.appendChild(questionHeader);
-   
-       // Display the options, with the correct and wrong answear
+// Display the options, with the correct and wrong answear
        const optionsList = document.createElement("ul");
        optionsList.className = "options-list";
        question.options.forEach((option, optionIndex) => {
@@ -129,8 +161,6 @@ function updateQuestionList() {
   });
 
 }
-
-
 
 
 searchInput.addEventListener("input", function() {
@@ -259,8 +289,7 @@ function showQuestion(){
 function resetState(){
     while(answerSection.firstChild){
         answerSection.removeChild(answerSection.firstChild);
-    }
-    
+    }    
 }
 
 function restartQuiz() {
